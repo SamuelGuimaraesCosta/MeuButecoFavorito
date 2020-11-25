@@ -1,0 +1,7 @@
+{
+  "name": "MeuButecoFavorito",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
