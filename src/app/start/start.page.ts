@@ -15,7 +15,7 @@ export class StartPage implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.router.navigate(['/login']);
-    }, 2000);
+    }, 2500);
   }
 
 }

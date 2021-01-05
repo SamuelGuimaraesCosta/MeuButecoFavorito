@@ -1,0 +1,32 @@
+<ion-content class="ion-padding">
+  <div class="vertical-align">
+    <form #form="ngForm" (ngSubmit)="login(form)">
+      <div class="ion-text-center">
+        <img src="../../../assets/logo.png" width="90%">
+        <h3>Entrar</h3>
+      </div>
+      <div class="ion-padding">
+        <ion-item>
+          <ion-input name="email" type="email" pattern="email" inputmode="email" placeholder="E-Mail" ngModel required
+            autocomplete="email">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input name="password" [type]="passwordType" clearOnEdit="false" placeholder="Senha" ngModel required>
+          </ion-input>
+          <ion-icon slot="end" [name]="passwordIcon" (click)="hideShowPassword()"></ion-icon>
+        </ion-item>
+      </div>
+      <div>
+        <ion-button shape="round" color="warning" type="submit" [disabled]="form.invalid" expand="block">
+          Beber
+          <ion-icon slot="end" name="beer-outline"></ion-icon>
+        </ion-button>
+      </div>
+      <div class="ion-text-center">
+        Se você ainda não criou sua conta no <strong>Meu Buteco Favorito</strong>, por favor <a routerLink="/register">
+          registre-se</a> e bora <strong>tomar uma</strong>!
+      </div>
+    </form>
+  </div>
+</ion-content>
