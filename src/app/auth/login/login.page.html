@@ -1,24 +1,39 @@
 <ion-content class="ion-padding">
   <div class="vertical-align">
-    <form #form="ngForm" (ngSubmit)="login(form)">
+    <form [formGroup]="loginForm" (ngSubmit)="doLogin()" novalidate>
       <div class="ion-text-center">
         <img src="../../../assets/logo.png" width="90%">
         <h3>Entrar</h3>
       </div>
-      <div class="ion-padding">
-        <ion-item>
-          <ion-input name="email" type="email" pattern="email" inputmode="email" placeholder="E-Mail" ngModel required
+      <div>
+        <ion-item lines="full" style="border-radius: 8px 8px 0px 0px;">
+          <ion-input name="email" formControlName="email" type="email" placeholder="E-Mail" required
             autocomplete="email">
           </ion-input>
         </ion-item>
-        <ion-item>
-          <ion-input name="password" [type]="passwordType" clearOnEdit="false" placeholder="Senha" ngModel required>
+        <span class="ion-padding" *ngIf="submitted && errorCtr.email.errors?.required">
+          E-Mail inválido: O E-Mail é obrigatório!
+        </span>
+        <span class="ion-padding ion-text-center"
+          *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid">
+          E-Mail inválido: E-Mail em formato inválido!
+        </span>
+        <ion-item style="border-radius: 0px 0px 8px 8px;">
+          <ion-input name="senha" formControlName="senha" [type]="passwordType" clearOnEdit="false" placeholder="Senha"
+            required>
           </ion-input>
           <ion-icon slot="end" [name]="passwordIcon" (click)="hideShowPassword()"></ion-icon>
         </ion-item>
+        <span class="error ion-padding" *ngIf="submitted && errorCtr.senha.errors?.required">
+          Senha inválida: A senha é obrigatória!
+        </span>
+        <span class="ion-padding ion-text-center"
+          *ngIf="loginForm.controls.senha.touched && loginForm.controls.senha.invalid">
+          Senha inválida: Senha em formato inválido!
+        </span>
       </div>
       <div>
-        <ion-button shape="round" color="warning" type="submit" [disabled]="form.invalid" expand="block">
+        <ion-button shape="round" color="warning" type="submit" expand="block">
           Beber
           <ion-icon slot="end" name="beer-outline"></ion-icon>
         </ion-button>
