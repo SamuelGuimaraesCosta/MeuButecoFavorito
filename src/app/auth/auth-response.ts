@@ -1,10 +1,11 @@
 export interface AuthResponse {
     user: {
-        idusuario: number,
-        nome: string,
-        email: string,
-        senha: string,
-        access_token: string,
-        expires_in: number
-    }
+        IDUSUARIO: number,
+        NOME: string,
+        EMAIL: string,
+        SENHA: string,
+        DTNASCIMENTO: string
+    },
+    TOKEN: string,
+    EXPIRE: number
 }

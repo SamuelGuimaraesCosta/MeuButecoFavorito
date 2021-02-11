@@ -11,6 +11,60 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-
+<ion-content class="ion-padding">
+  <div class="vertical-align">
+    <form [formGroup]="registerForm" (ngSubmit)="doRegister()" novalidate>
+      <div class="ion-text-center">
+        <h3>Registrar</h3>
+      </div>
+      <div>
+        <ion-item lines="full" style="border-radius: 8px 8px 0px 0px;">
+          <ion-input name="nome" formControlName="nome" type="text" placeholder="Nome Completo" required>
+          </ion-input>
+        </ion-item>
+        <span class="ion-padding" *ngIf="submitted && errorCtr.nome.errors?.required">
+          Nome Completo inválido: O Nome Completo é obrigatório!
+        </span>
+        <span class="ion-padding ion-text-center"
+          *ngIf="registerForm.controls.nome.touched && registerForm.controls.nome.invalid">
+          Nome Completo inválido: O Nome Completo está em formato inválido!
+        </span>
+        <ion-item lines="full">
+          <ion-input name="email" formControlName="email" type="email" placeholder="E-Mail" required
+            autocomplete="email">
+          </ion-input>
+        </ion-item>
+        <span class="ion-padding" *ngIf="submitted && errorCtr.email.errors?.required">
+          E-Mail inválido: O E-Mail é obrigatório!
+        </span>
+        <span class="ion-padding ion-text-center"
+          *ngIf="registerForm.controls.email.touched && registerForm.controls.email.invalid">
+          E-Mail inválido: E-Mail em formato inválido!
+        </span>
+        <ion-item style="border-radius: 0px 0px 8px 8px;">
+          <ion-input name="senha" formControlName="senha" [type]="passwordType" clearOnEdit="false" placeholder="Senha"
+            required>
+          </ion-input>
+          <ion-icon slot="end" [name]="passwordIcon" (click)="hideShowPassword()"></ion-icon>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="submitted && errorCtr.senha.errors?.required">
+          Senha inválida: A senha é obrigatória!
+        </span>
+        <span class="ion-padding ion-text-center"
+          *ngIf="registerForm.controls.senha.touched && registerForm.controls.senha.invalid">
+          Senha inválida: Senha em formato inválido!
+        </span>
+      </div>
+      <div>
+        <ion-button shape="round" color="warning" type="submit" expand="block">
+          Cadastrar e Beber
+          <ion-icon slot="end" name="beer-outline"></ion-icon>
+        </ion-button>
+      </div>
+      <div class="ion-text-center">
+         Já é cadastrado?, faça<a routerLink="/login">
+          LOGIN</a> e bora <strong>curtir e tomar uma</strong>!
+      </div>
+    </form>
+  </div>
 </ion-content>
