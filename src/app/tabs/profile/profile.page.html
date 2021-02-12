@@ -1,9 +1,44 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<ion-toolbar color="warning">
+  <ion-buttons slot="primary">
+    <ion-button *ngIf="podeSalvar" (click)="salvaNovosDados()">
+      <ion-icon slot="icon-only" name="checkmark-outline"></ion-icon>
+    </ion-button>
+    <ion-button (click)="logOutApp()">
+      <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title>Meu Perfil</ion-title>
+</ion-toolbar>
+<ion-content fullscreen>
+  <ion-grid class="ion-padding -top">
+    <ion-row class="ion-justify-content-center">
+      <ion-avatar style="zoom: 3;">
+        <img src="../../../assets/profile_pic.png">
+      </ion-avatar>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-button color="warning" size="small">
+        Alterar
+        <ion-icon slot="end" name="camera-outline"></ion-icon>
+      </ion-button>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <h1><strong>{{ dadosUsuario.NOME }}</strong></h1>
+    </ion-row>
+  </ion-grid>
+  <ion-list>
+    <ion-item>
+      <ion-label>Nome:</ion-label>
+      <ion-input (ionChange)="changeFieldNome($event.detail.value)" value="{{ dadosUsuario.NOME }}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Data de Nascimento:</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" min="1950" max="{{ anoMaximo }}" value="{{ dadosUsuario.DTNASCIMENTO }}"
+        cancelText="Cancelar" doneText="Pronto"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>CPF:</ion-label>
+      <ion-input disabled></ion-input>
+    </ion-item>
+  </ion-list>
 </ion-content>

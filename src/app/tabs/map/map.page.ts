@@ -9,6 +9,10 @@ export class MapPage implements OnInit {
 
   constructor() { }
 
+  ionViewWillEnter() {
+    console.log("carregar dados da página map!");
+  }
+
   ngOnInit() {
   }
 
